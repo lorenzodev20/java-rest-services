@@ -1,14 +1,15 @@
 package dev.echoforge.rest.libros.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.persistence.*;
 
-@Table(name = "libros")
-@Entity
+@JsonPropertyOrder({"id", "titulo", "resumen", "nroPaginas", "estado"})
+@Table(name = "libros") // SQL
+@Entity(name = "LibroEntity")// JPQL - Java Persistency Query Language - Recomendado
 public class LibroEntity {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String titulo;
     private String resumen;
     private int nroPaginas;
@@ -17,7 +18,7 @@ public class LibroEntity {
     public LibroEntity() {
     }
 
-    public LibroEntity(String titulo, String resumen, int nroPaginas, String estado) {
+    public LibroEntity(String titulo, String resumen, Integer nroPaginas, String estado) {
         this.titulo = titulo;
         this.resumen = resumen;
         this.nroPaginas = nroPaginas;
@@ -25,7 +26,7 @@ public class LibroEntity {
     }
 
 
-    public LibroEntity(int id, String titulo, String resumen, int nroPaginas, String estado) {
+    public LibroEntity(Integer id, String titulo, String resumen, Integer nroPaginas, String estado) {
         this.id = id;
         this.titulo = titulo;
         this.resumen = resumen;
@@ -33,11 +34,11 @@ public class LibroEntity {
         this.estado = estado;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

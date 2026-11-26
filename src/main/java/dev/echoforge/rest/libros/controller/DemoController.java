@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     @GetMapping
     public String demo(){
-        return "REST API - Lorenzo";
+        return "REST API - Java Spring Boot 4";
     }
 }
